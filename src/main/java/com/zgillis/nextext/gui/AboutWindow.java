@@ -5,10 +5,11 @@ import java.awt.*;
 
 public class AboutWindow extends JInternalFrame
 {
-    public static final int WINDOW_WIDTH = 400, WINDOW_HEIGHT = 225;
+    public static final int WINDOW_WIDTH = 275, WINDOW_HEIGHT = 150;
 
     // Components
     JLabel nexTextTitle;
+    JLabel aboutText;
 
     public AboutWindow()
     {
@@ -22,9 +23,13 @@ public class AboutWindow extends JInternalFrame
     private void initComponents()
     {
         nexTextTitle = new JLabel("NexText Editor", SwingConstants.CENTER);
-        nexTextTitle.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-
+        nexTextTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
         add(nexTextTitle);
-        nexTextTitle.setBounds(0,15, WINDOW_WIDTH, 50);
+        nexTextTitle.setBounds(0,15, WINDOW_WIDTH, 20);
+
+        aboutText = new JLabel("<html><center>A multi-file text editor written in Java.<br/>Copyright © 2018 Zachary Gillis</center></html>",
+                SwingConstants.CENTER);
+        add(aboutText);
+        aboutText.setBounds(0, 50, WINDOW_WIDTH, 30);
     }
 }

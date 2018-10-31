@@ -17,7 +17,7 @@ public class MainWindow extends JFrame
     // Menu Definition
     JMenuBar menuBar;
     JMenu fileMenu, editMenu, helpMenu;
-    JMenuItem exitMi;
+    JMenuItem newMi, openMi, saveMi, saveAsMi, exitMi;
     JMenuItem cutMi, copyMi, pasteMi, selAllMi;
     JMenuItem aboutMi, helpMi;
 
@@ -49,10 +49,25 @@ public class MainWindow extends JFrame
 
         // FILE MENU
         fileMenu = new JMenu("File");
+        newMi = new JMenuItem("New");
+        openMi = new JMenuItem("Open");
+        saveMi = new JMenuItem("Save");
+        saveAsMi = new JMenuItem("Save As");
         exitMi = new JMenuItem("Exit");
+        fileMenu.add(newMi);
+        fileMenu.add(new JSeparator());
+        fileMenu.add(openMi);
+        fileMenu.add(saveMi);
+        fileMenu.add(saveAsMi);
+        fileMenu.add(new JSeparator());
         fileMenu.add(exitMi);
         menuBar.add(fileMenu);
 
+        newMi.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                renderNewEditorWindow();
+            }
+        });
         exitMi.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
@@ -68,6 +83,7 @@ public class MainWindow extends JFrame
         editMenu.add(cutMi);
         editMenu.add(copyMi);
         editMenu.add(pasteMi);
+        editMenu.add(new JSeparator());
         editMenu.add(selAllMi);
         menuBar.add(editMenu);
 
@@ -86,6 +102,7 @@ public class MainWindow extends JFrame
         aboutMi = new JMenuItem("About NexText Editor");
         helpMi = new JMenuItem("Help");
         helpMenu.add(aboutMi);
+        helpMenu.add(new JSeparator());
         helpMenu.add(helpMi);
         menuBar.add(helpMenu);
 
@@ -104,5 +121,13 @@ public class MainWindow extends JFrame
         desktopPane.add(aboutWindow);
         aboutWindow.setBounds(getWidth()/2 - aboutWindow.WINDOW_WIDTH/2,
                 getHeight()/2 - aboutWindow.WINDOW_HEIGHT,aboutWindow.WINDOW_WIDTH,aboutWindow.WINDOW_HEIGHT);
+    }
+
+    private void renderNewEditorWindow()
+    {
+        EditorWindow editorWindow = new EditorWindow();
+        desktopPane.add(editorWindow);
+        editorWindow.setBounds(getWidth()/2 - editorWindow.WINDOW_WIDTH/2,
+                getHeight()/2 - editorWindow.WINDOW_HEIGHT,editorWindow.WINDOW_WIDTH,editorWindow.WINDOW_HEIGHT);
     }
 }
